@@ -218,6 +218,7 @@ public class RecordingService extends Service implements MediaRecorder.OnInfoLis
                 // Close quick shade
                 sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
                 break;
+
             case ACTION_DELETE:
                 // Close quick shade
                 sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
@@ -234,6 +235,11 @@ public class RecordingService extends Service implements MediaRecorder.OnInfoLis
                 // Remove notification
                 mNotificationManager.cancelAsUser(null, NOTIFICATION_VIEW_ID, currentUser);
                 Log.d(TAG, "Deleted recording " + uri);
+
+            case ACTION_SHOW_DIALOG:
+                if (mController != null) {
+                    mController.createScreenRecordDialog(this, null).show();
+                }
                 break;
             case ACTION_SHOW_DIALOG:
                 if (mController != null) {
