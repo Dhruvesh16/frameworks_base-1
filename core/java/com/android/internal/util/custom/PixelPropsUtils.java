@@ -210,6 +210,14 @@ public class PixelPropsUtils {
         if (packageName.equals(PACKAGE_GMS) &&
                 processName.equals(PACKAGE_GMS + ".unstable")) {
             sIsGms = true;
+
+        if (packageName == null) {
+            return;
+        }
+
+        if (packageName.equals(PACKAGE_GMS) &&
+                    processName.equals(PACKAGE_GMS + ".unstable")) {
+                sIsGms = true;
         }
         boolean isPixelDevice = Arrays.asList(pixelCodenames).contains(SystemProperties.get(DEVICE));
         if (!isPixelDevice &&
