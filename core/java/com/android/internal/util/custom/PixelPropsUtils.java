@@ -142,6 +142,11 @@ public class PixelPropsUtils {
             "com.mobile.legends"
     };
 
+    private static final Map<String, Object> propsToChangeMI10;
+    private static final String[] packagesToChangeMI10 = {
+            "com.mobile.legends"
+    };
+
     private static ArrayList<String> allProps = new ArrayList<>(Arrays.asList("BRAND", "MANUFACTURER", "DEVICE", "PRODUCT", "MODEL", "FINGERPRINT"));
 
     private static volatile boolean sIsGms = false;
