@@ -34,26 +34,25 @@ public class PixelPropsUtils {
     private static final String TAG = PixelPropsUtils.class.getSimpleName();
     private static final boolean DEBUG = false;
 
-    private static final Map<String, Object> propsToChangePixel6;
-
+    // Packages to Spoof as Pixel 5
     private static final Map<String, Object> propsToChangePixel5;
     private static final String[] packagesToChangePixel5 = {
             "com.android.vending",
-            "com.google.android.apps.photos",
             "com.google.android.apps.turbo",
             "com.google.android.apps.turboadapter",
-            "com.google.android.dialer",
             "com.google.android.googlequicksearchbox",
             "com.google.android.tts",
             "com.google.audio.hearing.visualization.accessibility.scribe"
     };
 
+    // Packages to Spoof as Pixel XL
     private static final Map<String, Object> propsToChangePixelXL;
     private static final String[] packagesToChangePixelXL = {
             "com.google.android.apps.photos"
     };
 
-    private static final Map<String, ArrayList<String>> propsToKeep;
+    // Packages to Spoof as Pixel 6 Pro
+    private static final Map<String, Object> propsToChangePixel6;
     private static final String[] extraPackagesToChange = {
             "com.android.chrome",
             "com.android.vending",
@@ -74,8 +73,11 @@ public class PixelPropsUtils {
             "com.google.android.android.contacts",
             "com.google.android.android.apps.messaging",
             "com.google.android.gm"
+
     };
 
+    // Packages to Keep with original device
+    private static final Map<String, ArrayList<String>> propsToKeep;
     private static final String[] packagesToKeep = {
         "com.google.android.GoogleCamera",
         "com.google.android.GoogleCamera.Cameight",
@@ -90,7 +92,11 @@ public class PixelPropsUtils {
         "com.google.android.apps.cameralite",
         "com.google.ar.core",
         "com.google.android.apps.wearables.maestro.companion",
-        "com.google.android.apps.recorder"
+        "com.google.android.apps.recorder",
+        "com.google.android.youtube",
+        "com.google.android.apps.youtube.kids",
+        "com.google.android.apps.youtube.music",
+        "com.google.android.dialer"
     };
 
     // Codenames for currently supported Pixels by Google
@@ -105,6 +111,7 @@ public class PixelPropsUtils {
             "flame"
     };
 
+    // Packages to Spoof as Asus ROG Phone 1
     private static final Map<String, Object> propsToChangeROG1;
     private static final String[] packagesToChangeROG1 = {
             "com.dts.freefireth",
@@ -112,6 +119,7 @@ public class PixelPropsUtils {
             "com.madfingergames.legends"
     };
 
+    // Packages to Spoof as Xperia 5
     private static final Map<String, Object> propsToChangeXP5;
     private static final String[] packagesToChangeXP5 = {
             "com.activision.callofduty.shooter",
@@ -120,6 +128,7 @@ public class PixelPropsUtils {
             "com.vng.codmvn"
     };
 
+    // Packages to Spoof as OnePlus 8 Pro
     private static final Map<String, Object> propsToChangeOP8P;
     private static final String[] packagesToChangeOP8P = {
             "com.tencent.ig",
@@ -142,6 +151,7 @@ public class PixelPropsUtils {
             "com.mobile.legends"
     };
 
+    // Packages to Spoof as Mi 11 Ultra
     private static final Map<String, Object> propsToChangeMI11;
     private static final String[] packagesToChangeMI11 = {
             "com.mobile.legends"
@@ -202,7 +212,7 @@ public class PixelPropsUtils {
             sIsGms = true;
         }
         boolean isPixelDevice = Arrays.asList(pixelCodenames).contains(SystemProperties.get(DEVICE));
-        if (!isPixelDevice && 
+        if (!isPixelDevice &&
             ((packageName.startsWith("com.google.") && !Arrays.asList(packagesToKeep).contains(packageName))
                 || Arrays.asList(extraPackagesToChange).contains(packageName))) {
             Map<String, Object> propsToChange = propsToChangePixel6;
